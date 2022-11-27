@@ -1,0 +1,147 @@
+[<div class="card hidden" id="filings">
+<h5 class="card-header text-white bg-sec-blue" id="filingsHeader">Filings</h5>
+<div class="card-body">
+<div class="row" id="searchForms">
+<div class="col col-12 col-xl-8" style="margin-top: 5px;">
+<div class="form-inline" style="border: 1px lightgray solid; padding: 20px 15px 15px 15px">
+<div class="btn-group btn-group-sm js-view-all-only mr-2 mb-2" role="group">
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" id="btnGroupDrop1" type="button">
+<span id="viewAllGroupSelection">All</span>
+</button>
+<div aria-labelledby="btnGroupDrop1" class="dropdown-menu">
+<a class="js-filter-group dropdown-item" data-filter="all" href="#">All</a>
+<a class="js-filter-group dropdown-item hidden js-entity-operating js-entity-other" data-filter="excludeInsiderTransactions" href="#">Exclude
+                                        insider transactions</a>
+<a class="js-filter-group dropdown-item hidden js-entity-operating" data-filter="currentReports" href="#">Current
+                                        reports</a>
+<a class="js-filter-group dropdown-item hidden js-entity-operating" data-filter="annualOrQuarterlyReports" href="#">Annual &amp;
+                                        quarterly reports</a>
+<a class="js-filter-group dropdown-item hidden js-entity-operating" data-filter="proxyStatements" href="#">Proxy
+                                        statements</a>
+<a class="js-filter-group dropdown-item hidden js-entity-operating js-entity-other" data-filter="insiderTransactions" href="#">Insider
+                                        transactions</a>
+<a class="js-filter-group dropdown-item hidden js-entity-operating" data-filter="beneficialOwnership" href="#">Beneficial
+                                        ownership</a>
+<!-- <a class="js-filter-group dropdown-item hidden js-entity-operating" href="#"
+                                        data-filter="registrations">Registrations statements</a>
+                                    <a class="js-filter-group dropdown-item hidden js-entity-operating" href="#"
+                                        data-filter="prospectuses">Prospectuses</a> -->
+<a class="js-filter-group dropdown-item hidden js-entity-investment" data-filter="proxyVotingRecords" href="#">Proxy voting
+                                        records</a>
+<a class="js-filter-group dropdown-item hidden js-entity-investment" data-filter="shareholderReports" href="#">Shareholder
+                                        reports</a>
+<a class="js-filter-group dropdown-item hidden js-entity-investment" data-filter="statutoryProspectuses" href="#">Statutory
+                                        prospectuses</a>
+<a class="js-filter-group dropdown-item hidden js-entity-investment" data-filter="summaryProspectuses" href="#">Summary
+                                        prospectuses</a>
+</div>
+</div>
+<input id="searchFilings" type="hidden"/>
+<label class="sr-only" for="searchbox" id="SearchboxLabel">Search
+                                table</label>
+<input aria-describedby="SearchboxDesc" aria-labelledby="SearchboxLabel" class="form-control form-control-sm mr-2 mb-2" id="searchbox" placeholder="Search table" type="search"/>
+<span class="hidden" id="SearchboxDesc">Search table</span>
+<label class="sr-only" for="filingDateFrom" id="DateFromLabel">From Date
+                                (yyyy-mm-dd)</label>
+<input aria-describedby="DateFromDesc" aria-labelledby="DateFromLabel" class="form-control form-control-sm mr-2 mb-2" id="filingDateFrom" placeholder="From Date (yyyy-mm-dd)" type="search"/>
+<span class="hidden" id="DateFromDesc">From Date (yyyy-mm-dd)</span>
+<label class="sr-only" for="filingDateTo" id="DateToLabel">To Date
+                                (yyyy-mm-dd)</label>
+<input aria-describedby="DateToDesc" aria-labelledby="DateToLabel" class="form-control form-control-sm mr-2 mb-2" id="filingDateTo" placeholder="To Date (yyyy-mm-dd)" type="search"/>
+<span class="hidden" id="DateToDesc">To Date (yyyy-mm-dd)</span>
+<button class="btn btn-primary btn-sm mr-2 mb-2" id="btnClear">Clear</button>
+<button class="btn btn-info btn-sm mr-2 mb-2 js-link-button hidden" id="btnEducation">Education</button>
+<br/>
+<div class="form-row small text-danger hidden" id="validationMessage"></div>
+<div class="js-column-search hidden alert alert-secondary" style="margin: -5px;">
+<span id="filteredBy"></span>
+                                 
+                                <button class="btn btn-sm btn-outline-dark float-right" id="clearColumnFilter">Clear</button>
+</div>
+</div>
+</div>
+<div class="col col-12 col-xl-4" style="margin-top: 5px;">
+<div class="form-inline" style="border: 1px lightgray solid; padding: 20px 15px 15px 15px">
+<label class="sr-only" for="fullTextSearch">Keywords:</label>
+<input class="form-control form-control-sm mr-2 mb-2" id="fullTextSearch" placeholder="Keywords" type="search">
+<button class="btn btn-primary btn-sm mr-2 mb-2" id="btnFullTextSearch">Search text in
+                                documents</button>
+</input></div>
+</div>
+</div>
+<div>
+<form>
+<div class="form-row">
+<div class="form-group col-12">
+<fieldset>
+<legend class="col-form-label">Show columns:</legend>
+<div class="form-check form-check-inline small">
+<input aria-describedby="colFilingsDesc" class="form-check-input js-show-hide-column" disabled="" id="colFilings" name="colFilings" type="checkbox" value="form">
+<label class="form-check-label" for="colFilings">Form type</label>
+<span class="hidden" id="colFilingsDesc">Click to toggle column
+                                            visibility</span>
+</input></div>
+<div class="form-check form-check-inline small">
+<input aria-describedby="colDescriptionDesc" class="form-check-input js-show-hide-column" disabled="" id="colDescription" name="colDescription" type="checkbox" value="title">
+<label class="form-check-label" for="colDescription">Form description</label>
+<span class="hidden" id="colDescriptionDesc">Click to toggle column
+                                            visibility</span>
+</input></div>
+<div class="form-check form-check-inline small">
+<input aria-describedby="colFilingDataDesc" class="form-check-input js-show-hide-column" disabled="" id="colFilingData" name="colFilingData" type="checkbox" value="filingDate"/>
+<label class="form-check-label" for="colFilingData">Filing
+                                            date</label>
+<span class="hidden" id="colFilingDataDesc">Click to toggle column
+                                            visibility</span>
+</div>
+<div class="form-check form-check-inline small">
+<input aria-describedby="colReportForDesc" class="form-check-input js-show-hide-column" id="colReportFor" name="colReportFor" type="checkbox" value="reportDate"/>
+<label class="form-check-label" for="colReportFor">Reporting date</label>
+<span class="hidden" id="colReportForDesc">Click to toggle column
+                                            visibility</span>
+</div>
+<div class="form-check form-check-inline small">
+<input aria-describedby="colActDesc" class="form-check-input js-show-hide-column" id="colAct" name="colAct" type="checkbox" value="act"/>
+<label class="form-check-label" for="colAct">Act</label>
+<span class="hidden" id="colActDesc">Click to toggle column
+                                            visibility</span>
+</div>
+<div class="form-check form-check-inline small">
+<input aria-describedby="colFilmNumberDesc" class="form-check-input js-show-hide-column" id="colFilmNumber" name="colFilmNumber" type="checkbox" value="filmNumber"/>
+<label class="form-check-label" for="colFilmNumber">Film number</label>
+<span class="hidden" id="colFilmNumberDesc">Click to toggle column
+                                            visibility</span>
+</div>
+<div class="form-check form-check-inline small">
+<input aria-describedby="colFileNumberDesc" class="form-check-input js-show-hide-column" id="colFileNumber" name="colFileNumber" type="checkbox" value="fileNumber"/>
+<label class="form-check-label" for="colFileNumber">File number</label>
+<span class="hidden" id="colFileNumberDesc">Click to toggle column
+                                            visibility</span>
+</div>
+<div class="form-check form-check-inline small">
+<input aria-describedby="colAccNumberDesc" class="form-check-input js-show-hide-column" id="colAccNumber" name="colAccNumber" type="checkbox" value="accessionNumber"/>
+<label class="form-check-label" for="colDescription">Accession number</label>
+<span class="hidden" id="colAccNumberDesc">Click to toggle column
+                                            visibility</span>
+</div>
+<div class="form-check form-check-inline small">
+<input aria-describedby="colSizeDesc" class="form-check-input js-show-hide-column" id="colSize" name="colSize" type="checkbox" value="size"/>
+<label class="form-check-label" for="colSize">Size</label>
+<span class="hidden" id="colSizeDesc">Click to toggle column visibility</span>
+</div>
+<div class="form-check form-check-inline small js-grid-refresh float-right hidden">
+                                        ...Grid Refreshed
+                                    </div>
+</fieldset>
+</div>
+</div>
+</form>
+</div>
+<table class="table table-striped table-bordered table-sm small" id="filingsTable" style="width:100%">
+</table>
+<div>
+<span>Data source:</span>
+<a href="#" id="dataSource" rel="noopener noreferrer" target="_blank"></a>
+</div>
+</div>
+</div>]
