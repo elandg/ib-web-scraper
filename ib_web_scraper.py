@@ -103,8 +103,12 @@ def main():
     elements = driver.find_elements(By.TAG_NAME, 'tr')
     # print(len(elements))
     pdb.set_trace()
+    html_source_code = driver.execute_script("return document.body.innerHTML;")
+    html_soup = BeautifulSoup(html_source_code, 'html.parser').prettify()
     with open('html2.txt', 'w') as f:
-        print(driver.page_source.prettify(), file=f)
+        print(html_soup, file=f)
+    # with open('html2.txt', 'w') as f:
+    #     print(driver.page_source.prettify(), file=f)
     print("Hello World!")
     # //*[@id="filingsTable"]/tbody/tr[1]/td[2]/div/a[1]
     # //*[@id="filingsTable"]/tbody/tr[2]/td[2]/div/a[1]
